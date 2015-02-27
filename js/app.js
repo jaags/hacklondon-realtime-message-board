@@ -104,8 +104,8 @@ function addHref(data) {
     for(var i=0;i<replace.length;i++){
       if(replace[i].indexOf('http')==-1)
        replace[i] = 'http://'+replace[i]
-     
-      var parseUrl = '<a href="'+replace[i]+'" target="blank">'+replace[i]+'</a>'
+
+      var parseUrl = '<a href="'+replace[i]+'" target="_blank">'+replace[i]+'</a>'
       data.comment = data.comment.replace(replace[i],parseUrl)
     }
   }
