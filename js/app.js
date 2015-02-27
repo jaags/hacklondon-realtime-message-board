@@ -43,8 +43,8 @@ $('#console-input').keyup(function(e){
       var comment = $('#console-input').val();
       var message = new Stamplay.Cobject('message').Model
       message.set('comment', comment);      
-      message.set('pictureOwner', User.profileImg);
-      message.set('username', User.identities.github._json.login);
+      message.set('avatar', user.get('profileImg'));
+      message.set('username', user.instance.identities.github._json.login);
       message.save();
 
       //clean console content
@@ -79,7 +79,7 @@ var feed = new Stamplay.Cobject('message').Collection;
 /*
 * Pusher listeners
 */
-var pusher = new Pusher('YOURPUSHERID');
+var pusher = new Pusher('ea9c279021aed93c3c28');
 var channel = pusher.subscribe('public');
 channel.bind('message', function(data) {
 	
