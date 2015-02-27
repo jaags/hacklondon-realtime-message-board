@@ -21,7 +21,7 @@ var user = new Stamplay.User().Model;
 user.currentUser()
 .then(function(){
   //let's check if the user is logged
-  (user.instance._id) ? $('#console-message').html('$hackLondon : whassup?') : $('.guest-content').show();
+  (user.isLogged()) ? $('#console-message').html('$hackLondon : whassup?') : $('.guest-content').show();
 })
 
 
