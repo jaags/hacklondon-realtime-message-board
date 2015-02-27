@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>HackLondon - Stamplay</title>
+  <!-- CSS  -->
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/animate.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body >
+  <section class="black">
+    <div class="container" style="padding-top:35px;">
+      <div class="nav-wrapper">
+        <div class="row">
+          <div class="col m6 offset-m3 col s8 offset-s2">
+            <a href="#" class="brand-logo">
+              <img style="width:100%" src="img/HackLondon_Logo_Jan16_ForWeb.png" alt="" style="vertical-align: middle;"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div  id="index-banner" style="padding-bottom:35px;">
+      <div class="container">
+        <!-- description  -->
+        <div class="row center">
+          <h5 class="header col s12 grey-text text-lighten-5">Event Live Stream</h5>
+        </div>
+
+        <!-- button  -->
+        <div class="row center">
+          <a id="login-button" class="btn-large z-depth-4" style="display:none;">Login with Github</a>
+        </div>
+
+        <!-- console  --> </div>
+    </div>
+  </section>
+  <!-- feed  -->
+  <section style="padding-top:35px;background:linear-gradient(0deg,#b39c68,#a56365,#412e4c,#000000);">
+    <div class="container" >
+      <div class="row">
+        <div class="col s12 m12">
+          <div id="tofocus" class="col s12 m12 black z-depth-4" style="height:150px;border:1px solid white;">
+            <p id="logged" class="light-green-text text-accent-3" style="display:none">
+              $hackLondon : whassup?
+              <input id="console-input" type="text" style="border-bottom:none; box-shadow:none; -webkit-box-shadow:none"></input>
+            </p>
+            <p id="not-logged" class="light-green-text text-accent-3">$hackLondon : Please signup with Github..</p>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="feed-stream">
+        <!-- footer -->    
+      </div>
+    </div>
+    
+    <!-- footer -->
+    <div class="container">
+      <div class="row" style="padding-bottom:40px;margin-bottom:0px">
+        <div class="col m2 offset-m5 s6 offset-s3  white-text center-align">
+          <span style="font-size:10px">build with</span>
+          <a href="https://stamplay.com" class="brand-logo">
+            <img style="width:100%" src="img/logo-white.png" alt="" style="vertical-align: middle;" />
+          </a>
+          <span style="font-size:10px">We love Developers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+      
+      <script id="message-template" type="x-tmpl-mustache">
+        <div class="col s12 m12 wow bounceInUp">
+          <div class="card grey lighten-5 z-depth-4">
+            <div class="card-content black-text">
+              <span class="black-text">{{& comment }}</span>
+            </div>
+            <div class="card-action black-text grey lighten-2" style="padding: 0px;">
+              <img src="{{pictureOwner}}" alt="" style="width:50px;height:50px;vertical-align: middle;">
+              <span class="black-text" style="margin-left:10px;">
+                <a href="https://github.com/{{username}}" target="_blank">{{ username }} </a>
+              </span>
+              <span class="right truncate hide-on-small-only" style="line-height: 48px;margin-right:5px;">{{ date }}</span>
+            </div>
+          </div>
+        </div>
+      </script>
+      <!--  Scripts -->
+      <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="js/materialize.min.js"></script>
+      <script src="js/wow.min.js"></script>
+      <script src="js/mustache.min.js"></script>
+
+      <script src="https://js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
+      <script src="//drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/0.0.4/stamplay.min.js"></script>
+      <script src="js/app.js"></script>
+
+  </body>
+</html>
