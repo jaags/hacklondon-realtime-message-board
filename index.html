@@ -32,28 +32,32 @@
 
         <!-- button  -->
         <div class="row center">
-          <a id="login-button" class="btn-large z-depth-4" style="display:none;">Login with Github</a>
+          <a id="login-button" class="btn-large z-depth-4 guest-content" style="display:none;">Login with Github</a>
         </div>
 
-        <!-- console  --> </div>
+      </div>
     </div>
   </section>
-  <!-- feed  -->
+
+  <!-- Main Section  -->
   <section style="padding-top:35px;background:linear-gradient(0deg,#b39c68,#a56365,#412e4c,#000000);">
     <div class="container" >
       <div class="row">
+
+        <!-- console  -->
         <div class="col s12 m12">
           <div id="tofocus" class="col s12 m12 black z-depth-4" style="height:150px;border:1px solid white;">
-            <p id="logged" class="light-green-text text-accent-3" style="display:none">
-              $hackLondon : whassup?
+            <p class="light-green-text text-accent-3">
+              <span id="console-message">$hackLondon : Please signup with Github to post messages.</span>
               <input id="console-input" type="text" style="border-bottom:none; box-shadow:none; -webkit-box-shadow:none"></input>
-            </p>
-            <p id="not-logged" class="light-green-text text-accent-3">$hackLondon : Please signup with Github..</p>
+            </p>            
           </div>
         </div>
+
       </div>
+      
       <div class="row" id="feed-stream">
-        <!-- footer -->    
+        <!-- FEED HERE -->    
       </div>
     </div>
 
@@ -87,14 +91,15 @@
           </div>
         </div>
       </script>
+
       <!--  Scripts -->
       <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script src="js/materialize.min.js"></script>
-      <script src="js/wow.min.js"></script>
-      <script src="js/mustache.min.js"></script>
-
-      <script src="https://js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
       <script src="//drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/0.0.4/stamplay.min.js"></script>
+      <script src="https://js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
+      
+      <script src="js/lib/materialize.min.js"></script>
+      <script src="js/lib/wow.min.js"></script>
+      <script src="js/lib/mustache.min.js"></script>
       <script src="js/app.js"></script>
 
   </body>

@@ -1,31 +1,64 @@
+/*
+* UI effects and template init
+*/
+$('#tofocus').on('click', function(){ $('#console-input').focus()})
+$('#console-input').focus()  
 new WOW().init();
 
+//Init mustache template for our user messages
+var temp = $('#message-template').html();
+Mustache.parse(temp); 
 var urlRegExp = new RegExp(/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi)
 
+
+
+
+/*
+* Init user
+* https://github.com/Stamplay/stamplay-js-sdk#user
+*/
 var user = new Stamplay.User().Model;
 user.currentUser()
 .then(function(){
-  if(user.instance._id){
-  	window.User = user.instance
-  	$('#logged').show();
-  	$('#not-logged').hide();
-  }else{
-    $('#login-button').show();
-  }
+  //let's check if the user is logged
+  (user.instance._id) ? $('#console-message').html('$hackLondon : whassup?') : $('.guest-content').show();
 })
 
+
+
+
+/*
+* Listeners
+*/
 $('#login-button').on('click',function(){
+  //Start Github Login OAuth flow
 	user.login('github')
 })
 
-$('#tofocus').on('click', function(){ $('#console-input').focus()})
-$('#console-input').focus()  
+$('#console-input').keyup(function(e){
+  if(e.keyCode == 13){
+    if(!$('#console-input').val()==''){
+      
+      //stamplay sdk create custom obj
+      var comment = $('#console-input').val();
+      var message = new Stamplay.Cobject('message').Model
+      message.set('comment', comment);      
+      message.set('pictureOwner', User.profileImg);
+      message.set('username', User.identities.github._json.login);
+      message.save();
 
-//Prepare mustache template
-var temp = $('#message-template').html();
-Mustache.parse(temp); 
+      //clean console content
+      $('#console-input').val('');
+    }
+  }
+});
 
-//collect messages
+
+
+
+/*
+* Fetch messages created so far 
+*/
 var feed = new Stamplay.Cobject('message').Collection;
   feed.fetch({page:1, per_page:100, sort: '-dt_create'}).then(function(){
   	feed.instance.forEach(function(elem){    		
@@ -41,23 +74,12 @@ var feed = new Stamplay.Cobject('message').Collection;
 });
 
 
-$('#console-input').keyup(function(e){
-  if(e.keyCode == 13){
-    if(!$('#console-input').val()==''){
-    	var message = new Stamplay.Cobject('message').Model
-      //stamplay sdk create custom obj
-    	message.set('comment', $('#console-input').val());
-    	$('#console-input').val('');
-    	message.set('pictureOwner', User.profileImg);
-    	message.set('username', User.identities.github._json.login);
-    	message.save();
-    }
-  }
-});
-  
 
+
+/*
+* Pusher listeners
+*/
 var pusher = new Pusher('ea9c279021aed93c3c28');
-
 var channel = pusher.subscribe('public');
 channel.bind('message', function(data) {
 	
@@ -74,6 +96,9 @@ channel.bind('message', function(data) {
 
 
 
+/*
+* Utility function to look for url in a message and write an <a> HTML tag
+*/
 function addHref(data) {
     var replace = data.comment.match(urlRegExp);
     for(var i=0;i<replace.length;i++){

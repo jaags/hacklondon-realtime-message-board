@@ -1,0 +1,11 @@
+{
+  "appId": "sarcaazzo",
+  "apiKey": "c038e6bed88615d69f4ec4b5c054f0f21d0c85eab6c2d49d58327d78ccaefe94",
+  "public": "./",
+  "ignore": [
+    "stamplay.json",
+    "**/.*",
+    "**/node_modules/**",
+    ".gitignore"
+  ]
+}
