@@ -8,7 +8,7 @@ new WOW().init();
 //Init mustache template for our user messages
 var temp = $('#message-template').html();
 Mustache.parse(temp); 
-var urlRegExp = new RegExp(/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi)
+var urlRegExp = new RegExp(/(http:\/\/)|(https:\/\/)/gi)
 
 
 
@@ -65,9 +65,6 @@ var feed = new Stamplay.Cobject('message').Collection;
   		var d = new Date(elem.instance.dt_create)
 			elem.instance.date = d.toLocaleString('en-EN');
 
-      if(urlRegExp.test(elem.instance.comment))
-          addHref(elem.instance);    
-
 		  var rendered = Mustache.render(temp, elem.instance);
 			$('#feed-stream').append(rendered);
 		})    		
@@ -86,9 +83,6 @@ channel.bind('message', function(data) {
   var d = new Date(data.dt_create)
   data.date = d.toLocaleString('en-EN');
   data.comment = data.comment.replace('&quot;', '"').replace('&#x27;',"'").replace('&lt;','<').replace('&gt;','>')
-  
-  if(urlRegExp.test(data.comment))
-    addHref(data);    
 
 	var rendered = Mustache.render(temp, data);
 	$('#feed-stream').prepend(rendered)
@@ -102,10 +96,9 @@ channel.bind('message', function(data) {
 function addHref(data) {
     var replace = data.comment.match(urlRegExp);
     for(var i=0;i<replace.length;i++){
-      if(replace[i].indexOf('http')==-1)
-       replace[i] = 'http://'+replace[i]
-
+      
       var parseUrl = '<a href="'+replace[i]+'" target="_blank">'+replace[i]+'</a>'
+
       data.comment = data.comment.replace(replace[i],parseUrl)
     }
   }
