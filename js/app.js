@@ -79,7 +79,7 @@ var feed = new Stamplay.Cobject('message').Collection;
 /*
 * Pusher listeners
 */
-var pusher = new Pusher('ea9c279021aed93c3c28');
+var pusher = new Pusher('YOURPUSHERID');
 var channel = pusher.subscribe('public');
 channel.bind('message', function(data) {
 	
