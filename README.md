@@ -5,7 +5,7 @@ A realtime message board powered by Stamplay to demo at http://hacklondon.org
 
 At [Stamplay](https://stamplay.com) we love events where the hacker ethos of students spread all over the place. This events cultivate communities where aspiring hackers have the opportunity to learn, build, and share their creations with the world. This is a realtime message board built with Stamplay and Pusher with client-side only code.
 
-In this app users can signup with Github and leave a message on the board that gets updated in realtime. Here is what you will get: [https://hacklondon.stamplayapp.com](hacklondon.stamplayapp.com)
+In this app users can signup with Github and leave a message on the board that gets updated in realtime. Here is what you will get: [https://hacklondon.stamplayapp.com](http://hacklondon.stamplayapp.com)
 
 -----------------------
 # Anatomy
